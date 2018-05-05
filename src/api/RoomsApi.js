@@ -7,5 +7,8 @@ export default {
   },
   createRoom (name) {
     return Vue.http.post(process.env.API_URL + '/api/rooms', {name: name})
+  },
+  getLastMessages (roomId) {
+    return Vue.http.get(process.env.API_URL + `/api/rooms/${roomId}/last_messages`)
   }
 }
