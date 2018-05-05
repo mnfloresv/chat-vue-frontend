@@ -1,26 +1,30 @@
 <template>
   <div id="rooms">
-    <button @click="showModal=true">Añadir sala</button>
-    <AddRoomPopup v-if="showModal" @close="hideModal"></AddRoomPopup>
-    <div v-for="(room, index) in rooms" v-bind:key="index">
-      <router-link :to="{ name: 'ChatScreen', params: { id: room._id.$oid }}">{{room.name}}</router-link>
+    <div class="row justify-content-between m-4">
+      <ChatLogo img-class="small-icon"></ChatLogo>
+      <div><button class="btn btn-chat" data-toggle="modal" data-target="#addRoomModal">Añadir sala</button></div>
+    </div>
+    <AddRoomPopup @created="refresh"></AddRoomPopup>
+    <div v-for="(room, index) in rooms" v-bind:key="index" class="row list-group m-4">
+      <router-link :to="{ name: 'ChatScreen', params: { id: room._id.$oid }}" class="list-group-item list-group-item-action">{{room.name}}</router-link>
     </div>
   </div>
 </template>
 
 <script>
+import ChatLogo from '@/components/ChatLogo'
 import AddRoomPopup from '@/components/AddRoomPopup'
 import RoomsApi from '../api/RoomsApi'
 
 export default {
   name: 'RoomsScreen',
   components: {
-    AddRoomPopup
+    AddRoomPopup,
+    ChatLogo
   },
   data () {
     return {
-      rooms: [],
-      showModal: false
+      rooms: []
     }
   },
   created: function () {
@@ -32,9 +36,8 @@ export default {
         this.rooms = response.body
       })
     },
-    hideModal () {
-      this.showModal = false
-      this.fetchRooms() // refresh
+    refresh () {
+      this.fetchRooms()
     }
   }
 }

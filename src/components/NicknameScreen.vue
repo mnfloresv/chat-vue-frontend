@@ -1,15 +1,27 @@
 <template>
   <div id="start">
-      <form @submit.prevent="joinChat">
-          <input type="text" placeholder="Usuario" v-model="nickname">
-          <button>Entrar</button>
+    <div class="row justify-content-center">
+      <ChatLogo img-class="big-icon"></ChatLogo>
+    </div>
+    <div class="row justify-content-center">
+      <form @submit.prevent="joinChat" class="input-group nick-form">
+        <input type="text" placeholder="Usuario" v-model="nickname" class="form-control">
+        <div class="input-group-append">
+          <button class="form-control btn btn-chat">Entrar</button>
+        </div>
       </form>
+    </div>
   </div>
 </template>
 
 <script>
+import ChatLogo from '@/components/ChatLogo'
+
 export default {
   name: 'NicknameScreen',
+  components: {
+    ChatLogo
+  },
   data () {
     return {
       nickname: ''
@@ -25,5 +37,7 @@ export default {
 </script>
 
 <style>
-
+.nick-form {
+  width: 256px;
+}
 </style>
