@@ -4,9 +4,14 @@
       <ChatLogo img-class="small-icon"></ChatLogo>
       <div><button class="btn btn-chat" data-toggle="modal" data-target="#addRoomModal">Añadir sala</button></div>
     </div>
-    <AddRoomPopup @created="refresh"></AddRoomPopup>
+    <AddRoomPopup @created="fetchRooms"></AddRoomPopup>
+    <div v-if="loading" class="alert alert-secondary m-4" role="alert">
+      Cargando salas, por favor espere...
+    </div>
     <div v-for="(room, index) in rooms" v-bind:key="index" class="row list-group m-4">
-      <router-link :to="{ name: 'ChatScreen', params: { id: room._id.$oid }}" class="list-group-item list-group-item-action">{{room.name}}</router-link>
+      <router-link :to="{ name: 'ChatScreen', params: { id: room._id.$oid }}" class="list-group-item list-group-item-action">
+        {{room.name}}
+      </router-link>
     </div>
   </div>
 </template>
@@ -24,20 +29,22 @@ export default {
   },
   data () {
     return {
-      rooms: []
+      rooms: [],
+      loading: false,
+      timer: null
     }
   },
   created: function () {
+    this.timer = setTimeout(() => (this.loading = true), 100)
     this.fetchRooms()
   },
   methods: {
     fetchRooms () {
       RoomsApi.getRooms().then(response => {
         this.rooms = response.body
+        clearTimeout(this.timer)
+        this.loading = false
       })
-    },
-    refresh () {
-      this.fetchRooms()
     }
   }
 }
