@@ -1,30 +1,42 @@
 # chat-vue-frontend
 
-> Chat app frontend in Vue.js
+Frontend of web chat application that allow users to join rooms and communicate in real time.
 
-## Build Setup
+This project includes the user interface of the app made with Vue.js, for the backend part see: https://gitlab.com/manufloresv/chat-ror-backend
+
+## Demo
+
+A demo of the application is available at: https://chat-vue-frontend.netlify.com/
+
+![Screenshot](https://i.imgur.com/8st8SOS.png)
+
+## Technologies
+
+* Vue.js
+* vue-router
+* vue-resource
+* actioncable
+* Bootstrap 4
+
+## Set up environment
+
+For running a clean clone of the app:
 
 ``` bash
 # install dependencies
-npm install
+$ npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+$ npm run dev
 
 # build for production with minification
-npm run build
+$ npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
+You must run also the backend project for server calls.
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+By default `API_URL` and `ACTIONCABLE_URL` environment variables in `config/dev.env.js` are both pointing to `localhost:3000`
+
+## Credits
+
+Chat icon made by DinosoftLabs from Flaticon is licensed by CC 3.0 BY: https://www.flaticon.com/free-icon/chat_717947
