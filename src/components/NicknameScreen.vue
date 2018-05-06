@@ -5,7 +5,7 @@
     </div>
     <div class="row justify-content-center">
       <form @submit.prevent="joinChat" class="input-group nick-form">
-        <input type="text" placeholder="Usuario" v-model="nickname" class="form-control">
+        <input type="text" placeholder="Usuario" v-model="nickname" class="form-control" required>
         <div class="input-group-append">
           <button class="form-control btn btn-chat">Entrar</button>
         </div>

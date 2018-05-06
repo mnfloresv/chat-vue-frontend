@@ -76,8 +76,10 @@ export default {
       return localStorage.getItem('nickname') || 'Anónimo'
     },
     sendMessage () {
-      this.roomSubscription.send({author: this.getNickname(), text: this.newMessage})
-      this.newMessage = ''
+      if (this.newMessage) {
+        this.roomSubscription.send({author: this.getNickname(), text: this.newMessage})
+        this.newMessage = ''
+      }
     }
   }
 }

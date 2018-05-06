@@ -11,7 +11,7 @@
           </div>
           <form @submit.prevent="createRoom" class="form-group">
             <div class="modal-body">
-              <input type="text" placeholder="Nombre de la sala" v-model="roomName" class="form-control">
+              <input type="text" placeholder="Nombre de la sala" v-model="roomName" class="form-control" required>
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-chat">Guardar</button>
