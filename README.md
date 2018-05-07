@@ -1,6 +1,6 @@
 # chat-vue-frontend
 
-Frontend of web chat application that allow users to join rooms and communicate in real time.
+Frontend of web chat application that allows users to join rooms and communicate in real time.
 
 This project includes the user interface of the app made with Vue.js, for the backend part see: https://gitlab.com/manufloresv/chat-ror-backend
 
